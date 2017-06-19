@@ -1,0 +1,15 @@
+{
+  "agent": "elastic",
+  "steps": [
+    {
+      "name": "docker_build",
+      "image": "kubernetes-github-authn",
+      "tag": "kube-aws"
+    },
+    {
+      "name": "docker_push",
+      "image": "kubernetes-github-authn",
+      "tag": "kube-aws"
+    }
+  ]
+}
