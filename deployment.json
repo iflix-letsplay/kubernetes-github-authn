@@ -2,9 +2,16 @@
   "agent": "elastic",
   "steps": [
     {
-      "name": "docker_build",
-      "image": "kubernetes-github-authn",
-      "tag": "kube-aws"
+      "name": "ecr_create_repo",
+      "repositoryName": "kubernetes-github-authn"
+    },
+    {
+      "name": "command",
+      "command": "IMAGE_NAME=639820024964.dkr.ecr.ap-southeast-1.amazonaws.com/kubernetes-github-authn:kube-aws make docker-build"
+    },
+    {
+      "name": "stop_unless_branch",
+      "branch": [ "master", "iflix" ]
     },
     {
       "name": "docker_push",
