@@ -1,5 +1,5 @@
 REPO := oursky/kubernetes-github-authn
-IMAGE_NAME := $(REPO)
+IMAGE_NAME ?= $(REPO)
 GO_SRC_PATH := /go/src/github.com/$(REPO)
 PORT := 8080
 
@@ -13,7 +13,7 @@ endif
 
 .PHONY: build
 build:
-	$(GO_RUN) go build -o _output/main main.go
+	$(GO_RUN) sh -c "apk update && apk add git && go get . && go build -o _output/main main.go"
 
 .PHONY: vendor
 vendor:
